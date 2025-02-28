@@ -1,7 +1,6 @@
-package com.mojang.minecraftpe;
+package com.mojang.minecraftpe
 
-public class NotificationListenerService {
-    public static String getDeviceRegistrationToken() {
-        return "";
-    }
+object NotificationListenerService {
+    val deviceRegistrationToken: String
+        get() = ""
 }

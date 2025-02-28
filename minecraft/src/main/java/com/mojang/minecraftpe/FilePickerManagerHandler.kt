@@ -1,7 +1,7 @@
-package com.mojang.minecraftpe;
+package com.mojang.minecraftpe
 
-import android.content.Intent;
+import android.content.Intent
 
-interface FilePickerManagerHandler {
-    void startPickerActivity(Intent intent, int i);
+internal interface FilePickerManagerHandler {
+    fun startPickerActivity(intent: Intent?, i: Int)
 }

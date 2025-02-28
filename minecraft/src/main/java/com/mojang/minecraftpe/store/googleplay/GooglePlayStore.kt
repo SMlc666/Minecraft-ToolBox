@@ -1,60 +1,55 @@
-package com.mojang.minecraftpe.store.googleplay;
+package com.mojang.minecraftpe.store.googleplay
 
-import com.mojang.minecraftpe.MainActivity;
-import com.mojang.minecraftpe.store.ExtraLicenseResponseData;
-import com.mojang.minecraftpe.store.Store;
-import com.mojang.minecraftpe.store.StoreListener;
+import com.mojang.minecraftpe.MainActivity
+import com.mojang.minecraftpe.store.ExtraLicenseResponseData
+import com.mojang.minecraftpe.store.Store
+import com.mojang.minecraftpe.store.StoreListener
 
-public class GooglePlayStore implements Store {
-    MainActivity mActivity;
-    StoreListener mListener;
-
-    public GooglePlayStore(MainActivity activity, String licenseKey, StoreListener listener) {
-        mActivity = activity;
-        mListener = listener;
-        mListener.onStoreInitialized(true);
+class GooglePlayStore(
+    var mActivity: MainActivity,
+    licenseKey: String?,
+    var mListener: StoreListener
+) :
+    Store {
+    init {
+        mListener.onStoreInitialized(true)
     }
 
-    public String getStoreId() {
-        return "android.googleplay";
+    override val storeId: String
+        get() = "android.googleplay"
+
+    override fun hasVerifiedLicense(): Boolean {
+        return true
     }
 
-    public boolean hasVerifiedLicense() {
-        return true;
+    override fun queryProducts(productIds: Array<String?>?) {
     }
 
-    public void queryProducts(String[] productIds) {
+    override fun acknowledgePurchase(receipt: String?, productType: String?) {
     }
 
-    public void acknowledgePurchase(String receipt, String productType) {
+    override fun queryPurchases() {
     }
 
-    public void queryPurchases() {
+    override val productSkuPrefix: String
+        get() = ""
+
+    override val realmsSkuPrefix: String
+        get() = ""
+
+    override fun receivedLicenseResponse(): Boolean {
+        return true
     }
 
-    public String getProductSkuPrefix() {
-        return "";
+    override fun destructor() {
     }
 
-    public String getRealmsSkuPrefix() {
-        return "";
+    override val extraLicenseData: ExtraLicenseResponseData
+        get() = ExtraLicenseResponseData(0L, 0L, 0L)
+
+    override fun purchase(productId: String?, isSubscription: Boolean, payload: String?) {
     }
 
-    public boolean receivedLicenseResponse() {
-        return true;
-    }
-
-    public void destructor() {
-    }
-
-    @Override
-    public ExtraLicenseResponseData getExtraLicenseData() {
-        return new ExtraLicenseResponseData(0L, 0L, 0L);
-    }
-
-    public void purchase(String productId, boolean isSubscription, String payload) {
-    }
-
-    public void purchaseGame() {
+    override fun purchaseGame() {
     }
 }

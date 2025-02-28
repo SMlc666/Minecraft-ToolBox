@@ -1,27 +1,27 @@
-package com.mojang.minecraftpe.store;
+package com.mojang.minecraftpe.store
 
-public interface Store {
-    void acknowledgePurchase(String str, String str2);
+interface Store {
+    fun acknowledgePurchase(str: String?, str2: String?)
 
-    void destructor();
+    fun destructor()
 
-    ExtraLicenseResponseData getExtraLicenseData();
+    val extraLicenseData: ExtraLicenseResponseData?
 
-    String getProductSkuPrefix();
+    val productSkuPrefix: String?
 
-    String getRealmsSkuPrefix();
+    val realmsSkuPrefix: String?
 
-    String getStoreId();
+    val storeId: String?
 
-    boolean hasVerifiedLicense();
+    fun hasVerifiedLicense(): Boolean
 
-    void purchase(String str, boolean z, String str2);
+    fun purchase(str: String?, z: Boolean, str2: String?)
 
-    void purchaseGame();
+    fun purchaseGame()
 
-    void queryProducts(String[] strArr);
+    fun queryProducts(strArr: Array<String?>?)
 
-    void queryPurchases();
+    fun queryPurchases()
 
-    boolean receivedLicenseResponse();
+    fun receivedLicenseResponse(): Boolean
 }

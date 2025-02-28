@@ -1,64 +1,58 @@
-package com.mojang.minecraftpe.store.amazonappstore;
+package com.mojang.minecraftpe.store.amazonappstore
 
-import android.content.Context;
+import android.content.Context
+import com.mojang.minecraftpe.store.ExtraLicenseResponseData
+import com.mojang.minecraftpe.store.Store
+import com.mojang.minecraftpe.store.StoreListener
 
-import com.mojang.minecraftpe.store.ExtraLicenseResponseData;
-import com.mojang.minecraftpe.store.Store;
-import com.mojang.minecraftpe.store.StoreListener;
+class AmazonAppStore : Store {
+    var mListener: StoreListener
+    private var mForFireTV = false
 
-public class AmazonAppStore implements Store {
-    StoreListener mListener;
-    private boolean mForFireTV;
-
-    public AmazonAppStore(Context context, StoreListener listener) {
-        mListener = listener;
+    constructor(context: Context?, listener: StoreListener) {
+        mListener = listener
     }
 
-    public AmazonAppStore(Context context, StoreListener listener, boolean forFireTV) {
-        mListener = listener;
-        mForFireTV = forFireTV;
+    constructor(context: Context?, listener: StoreListener, forFireTV: Boolean) {
+        mListener = listener
+        mForFireTV = forFireTV
     }
 
-    public String getStoreId() {
-        return "android.amazonappstore";
+    override val storeId: String
+        get() = "android.amazonappstore"
+
+    override fun hasVerifiedLicense(): Boolean {
+        return true
     }
 
-    public boolean hasVerifiedLicense() {
-        return true;
+    override fun receivedLicenseResponse(): Boolean {
+        return true
     }
 
-    public boolean receivedLicenseResponse() {
-        return true;
+    override fun queryProducts(productIds: Array<String?>?) {
     }
 
-    public void queryProducts(String[] productIds) {
+    override fun acknowledgePurchase(receipt: String?, productType: String?) {
     }
 
-    public void acknowledgePurchase(String receipt, String productType) {
+    override fun queryPurchases() {
     }
 
-    public void queryPurchases() {
+    override val productSkuPrefix: String
+        get() = if (mForFireTV) "firetv." else ""
+
+    override val realmsSkuPrefix: String
+        get() = if (mForFireTV) "firetv." else ""
+
+    override fun destructor() {
     }
 
-    public String getProductSkuPrefix() {
-        return mForFireTV ? "firetv." : "";
+    override val extraLicenseData: ExtraLicenseResponseData
+        get() = ExtraLicenseResponseData(0L, 0L, 0L)
+
+    override fun purchase(productId: String?, isSubscription: Boolean, payload: String?) {
     }
 
-    public String getRealmsSkuPrefix() {
-        return mForFireTV ? "firetv." : "";
-    }
-
-    public void destructor() {
-    }
-
-    @Override
-    public ExtraLicenseResponseData getExtraLicenseData() {
-        return new ExtraLicenseResponseData(0L, 0L, 0L);
-    }
-
-    public void purchase(String productId, boolean isSubscription, String payload) {
-    }
-
-    public void purchaseGame() {
+    override fun purchaseGame() {
     }
 }
