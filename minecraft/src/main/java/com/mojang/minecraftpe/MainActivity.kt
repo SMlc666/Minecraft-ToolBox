@@ -17,7 +17,7 @@ abstract class MainActivity : NativeActivity(), View.OnKeyListener,
         throw RuntimeException("Stub!")
     }
 
-    override fun startPickerActivity(intent: Intent, i: Int) {
+    override fun startPickerActivity(intent: Intent?, i: Int) {
         throw RuntimeException("Stub!")
     }
 }
