@@ -164,11 +164,12 @@ class MainActivity : AppCompatActivity() {
         val mcActivity = Intent(this, launcherClass)
         mcActivity.putExtra("MC_SRC", mcInfo.sourceDir)
 
-        if (mcInfo.splitSourceDirs != null) {
+        mcInfo.splitSourceDirs?.let { splitDirs ->
             val listSrcSplit = ArrayList<String?>()
-            Collections.addAll(listSrcSplit, *mcInfo.splitSourceDirs)
+            Collections.addAll(listSrcSplit, *splitDirs)
             mcActivity.putExtra("MC_SPLIT_SRC", listSrcSplit)
         }
+
         startActivity(mcActivity)
         finish()
     }
