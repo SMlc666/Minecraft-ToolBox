@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id 'org.tboox.gradle-xmake-plugin' version '1.2.2'
 }
 
 android {
@@ -9,11 +10,13 @@ android {
     defaultConfig {
         applicationId "io.bambosan.mbloader"
         minSdk 26
+        //noinspection OldTargetApi
         targetSdk 34
         versionCode 11
         versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
+            //noinspection ChromeOsAbiSupport
             abiFilters 'arm64-v8a'
         }
     }
@@ -24,13 +27,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     externalNativeBuild {
         ndkBuild {
             path "src/main/jni/Android.mk"
         }
+    }
+    kotlinOptions {
+        jvmTarget = "21"
     }
     ndkVersion "27.0.12077973"
 }
