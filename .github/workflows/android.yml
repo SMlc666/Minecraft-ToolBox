@@ -33,4 +33,4 @@ jobs:
       uses: actions/upload-artifact@v4.6.1
       with:
         name: my-build-output
-        path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+        path: app/build/outputs/apk
