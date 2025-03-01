@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
 project(mc)
 find_package(shadowhook REQUIRED CONFIG)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(MC_INCLUDE_DIRS
         include/
         src/

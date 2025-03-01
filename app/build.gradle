@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.xmake.plugin)
 }
 
 android {
@@ -30,9 +31,8 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
     externalNativeBuild {
-        cmake {
-            version "3.31.5"
-            path "src/main/jni/CMakeLists.txt"
+        xmake {
+            path "src/main/jni/xmake.lua"
         }
     }
     kotlinOptions {
@@ -55,5 +55,4 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation libs.shadowhook
 }
