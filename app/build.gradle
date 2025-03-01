@@ -1,12 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id 'org.tboox.gradle-xmake-plugin' version '1.2.2'
 }
 
 android {
     namespace 'io.bambosan.mbloader'
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
         applicationId "io.bambosan.mbloader"
         minSdk 26
