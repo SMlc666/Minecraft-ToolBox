@@ -10,6 +10,7 @@ set(MC_INCLUDE_DIRS
 set(MC_LIBRARY_LIST
         shadowhook::shadowhook
         log
+        EGL
 )
 include_directories(mc PRIVATE ${MC_INCLUDE_DIRS})
 file(GLOB MC_SRC_FILES
