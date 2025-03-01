@@ -31,8 +31,9 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
     externalNativeBuild {
-        xmake {
-            path "src/main/jni/xmake.lua"
+        cmake {
+            path "src/main/jni/CMakeLists.txt"
+            version "3.33.5"
         }
     }
     kotlinOptions {
