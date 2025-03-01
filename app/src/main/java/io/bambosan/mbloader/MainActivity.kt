@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     @SuppressLint("SetTextI18n")
     private fun handleCacheCleaning(cacheDexDir: File, handler: Handler, listener: TextView) {
         if (cacheDexDir.exists() && cacheDexDir.isDirectory) {
