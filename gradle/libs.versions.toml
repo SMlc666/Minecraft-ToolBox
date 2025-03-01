@@ -1,19 +1,16 @@
 [versions]
 activityCompose = "1.10.1"
 agp = "8.6.1"
-composeBom = "2025.02.00"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
-constraintlayout = "2.1.4"
+constraintlayout = "2.2.1"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 lifecycleViewmodelCompose = "2.8.7"
-
 [libraries]
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -21,8 +18,8 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+material3 = { module = "androidx.compose.material3:material3" }
 runtime = { module = "androidx.compose.runtime:runtime" }
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
