@@ -3,4 +3,6 @@
 //
 #include "Init/Init.hpp"
 
-Init cheat-init("cheat-init",[](){});
+Init cheat_init("cheat-init", []() {
+  
+});

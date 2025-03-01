@@ -2,8 +2,12 @@ cmake_minimum_required(VERSION 3.30)
 project(mc)
 find_package(shadowhook REQUIRED CONFIG)
 set(MC_INCLUDE_DIRS
-        include
-        src
+        include/
+        src/
+)
+set(MC_LIBRARY_LIST
+        shadowhook::shadowhook
+        log
 )
 include_directories(mc PRIVATE ${MC_INCLUDE_DIRS})
 file(GLOB MC_SRC_FILES
@@ -13,4 +17,4 @@ file(GLOB MC_SRC_FILES
 add_library(mc SHARED
         ${MC_SRC_FILES}
 )
-target_link_libraries(mc shadowhook::shadowhook)
+target_link_libraries(mc ${MC_LIBRARY_LIST})
