@@ -2,6 +2,8 @@ package com.mojang.minecraftpe
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 
 class Launcher : MainActivity() {
     override fun onCreate(bundle: Bundle?) {
@@ -20,18 +22,20 @@ class Launcher : MainActivity() {
                     addAssetPath.invoke(assets, splitSource)
                 }
             }
+            Handler(Looper.getMainLooper()).postDelayed({
+                loadLibraries()
+            }, 6000) // 延迟2秒
             super.onCreate(bundle)
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    companion object {
-        init {
-            System.loadLibrary("c++_shared")
-            System.loadLibrary("fmod")
-            System.loadLibrary("minecraftpe")
-            System.loadLibrary("mc")
-        }
+    private fun loadLibraries() {
+        System.loadLibrary("c++_shared")
+        System.loadLibrary("fmod")
+        System.loadLibrary("minecraftpe")
+        System.loadLibrary("mc")
     }
+
 }

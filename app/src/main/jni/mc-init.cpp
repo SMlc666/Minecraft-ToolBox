@@ -19,7 +19,6 @@ extern "C" void ANativeActivity_onCreate(ANativeActivity *activity, void *savedS
 }
 
 JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //TODO: for debug
   void *handle = dlopen("libminecraftpe.so", RTLD_LAZY);
   android_main_minecraft = (void (*)(struct android_app *))(dlsym(handle, "android_main"));
   ANativeActivity_onCreate_minecraft =
