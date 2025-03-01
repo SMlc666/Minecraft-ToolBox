@@ -32,7 +32,6 @@ class Launcher : MainActivity() {
             System.loadLibrary("fmod")
             System.loadLibrary("minecraftpe")
             System.loadLibrary("mc")
-            System.loadLibrary("materialbinloader")
         }
     }
 }

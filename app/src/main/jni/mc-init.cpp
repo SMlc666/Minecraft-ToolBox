@@ -1,9 +1,9 @@
 #include <jni.h>
 #include <string>
 #include <dlfcn.h>
-
+#include "Init/Init.hpp"
 #include <android/native_activity.h>
-
+#include <android/log.h>
 static void (*android_main_minecraft)(struct android_app *app);
 static void (*ANativeActivity_onCreate_minecraft)(ANativeActivity *activity, void *savedState, size_t savedStateSize);
 
@@ -19,5 +19,13 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
     void *handle = dlopen("libminecraftpe.so", RTLD_LAZY);
     android_main_minecraft = (void (*)(struct android_app *)) (dlsym(handle, "android_main"));
     ANativeActivity_onCreate_minecraft = (void (*)(ANativeActivity *, void *, size_t)) (dlsym(handle, "ANativeActivity_onCreate"));
+    for (auto mInit : InitList) {
+        try {
+            mInit.second();
+        } catch (const std::exception &e) {
+            std::terminate();
+
+        }
+    }
     return JNI_VERSION_1_6;
 }
