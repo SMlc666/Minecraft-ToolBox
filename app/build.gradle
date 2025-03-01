@@ -31,8 +31,9 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
     externalNativeBuild {
-        ndkBuild {
-            path "src/main/jni/Android.mk"
+        cmake {
+            version "3.31.5"
+            path "src/main/jni/CMakeLists.txt"
         }
     }
     kotlinOptions {
