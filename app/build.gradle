@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -19,6 +20,9 @@ android {
             abiFilters 'arm64-v8a'
         }
     }
+
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -47,4 +51,10 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation libs.activity.compose
+    implementation libs.lifecycle.viewmodel.compose
+    implementation libs.runtime
+    def composeBom = libs.compose.bom // 最新稳定版
+    implementation composeBom
+    androidTestImplementation composeBom
 }
