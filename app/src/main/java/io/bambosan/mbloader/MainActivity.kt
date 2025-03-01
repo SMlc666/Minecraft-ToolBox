@@ -25,12 +25,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoaderScreen(viewModel)
+                    LoaderScreen(viewModel,this)
                 }
             }
-        }
 
-        viewModel.initialize(this)
+        }
     }
 
     override fun onDestroy() {
@@ -50,7 +49,7 @@ private fun LoaderTheme(content: @Composable () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun LoaderScreen(viewModel: MainViewModel) {
+private fun LoaderScreen(viewModel: MainViewModel , main : MainActivity) {
     val logs by remember { derivedStateOf { viewModel.logs } }
     val isLoading by remember { derivedStateOf { viewModel.isLoading } }
 
@@ -81,6 +80,13 @@ private fun LoaderScreen(viewModel: MainViewModel) {
                         .padding(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
+                    Button(
+                        onClick = {
+                            viewModel.initialize(main)
+                        }
+                    ){
+                        Text("Start")
+                    }
                     CircularProgressIndicator()
                 }
             }
