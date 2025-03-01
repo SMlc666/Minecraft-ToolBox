@@ -38,6 +38,11 @@ android {
     kotlinOptions {
         jvmTarget = "21"
     }
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/libshadowhook.so', '**/libshadowhook_nothing.so']
+        }
+    }
     ndkVersion "27.0.12077973"
 }
 
@@ -47,5 +52,4 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation libs.shadowhook
 }
