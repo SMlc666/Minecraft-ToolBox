@@ -7,7 +7,8 @@ appcompat = "1.7.0"
 constraintlayout = "2.1.4"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
-xmake = '1.2.2'
+shadowhook = "1.1.1"
+
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -16,10 +17,10 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+shadowhook = { module = "com.bytedance.android:shadowhook", version.ref = "shadowhook" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.24" }
-xmake-plugin = { id = "org.tboox.gradle-xmake-plugin", version.ref = "xmake" }
 
