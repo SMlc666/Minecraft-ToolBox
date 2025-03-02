@@ -24,6 +24,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_21
@@ -31,12 +34,20 @@ android {
     }
     externalNativeBuild {
         cmake {
-            version "3.31.5"
             path "src/main/jni/CMakeLists.txt"
+            version "3.31.5"
         }
     }
     kotlinOptions {
         jvmTarget = "21"
+    }
+    buildFeatures {
+        prefab true
+    }
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/libshadowhook.so', '**/libshadowhook_nothing.so']
+        }
     }
     ndkVersion "27.0.12077973"
 }
@@ -47,4 +58,5 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation libs.shadowhook
 }
