@@ -22,9 +22,6 @@ class Launcher : MainActivity() {
                     addAssetPath.invoke(assets, splitSource)
                 }
             }
-            Handler(Looper.getMainLooper()).postDelayed({
-                loadLibraries()
-            }, 6000) // 延迟2秒
             super.onCreate(bundle)
         } catch (e: Exception) {
             throw RuntimeException(e)
